@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { XHRBackend, RequestOptions } from '@angular/http';
-import { MaterialModule } from '@angular/material';
+import { SharedModule } from '../shared/shared.module';
 
 import { HttpService } from './http.service';
 import { httpServiceFactory } from '../_factories/http-service.factory';
@@ -12,10 +12,10 @@ import { LoaderComponent } from './loader/loader.component';
 @NgModule({
     imports: [
         CommonModule,
-        MaterialModule
+        SharedModule
     ],
     exports: [
-        LoaderComponent
+        LoaderComponent,
     ],
     declarations: [
         LoaderComponent
@@ -25,7 +25,7 @@ import { LoaderComponent } from './loader/loader.component';
         {
             provide: HttpService,
             useFactory: httpServiceFactory,
-            deps: [XHRBackend, RequestOptions, LoaderService ]    
+            deps: [XHRBackend, RequestOptions, LoaderService ]
         }
     ]
 })
